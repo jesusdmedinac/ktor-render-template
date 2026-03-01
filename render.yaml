@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: ktor-render-template
+    env: docker
+    dockerfilePath: Dockerfile
+    plan: free
