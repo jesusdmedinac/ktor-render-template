@@ -34,6 +34,12 @@ out/
 
 ### VS Code ###
 .vscode/
-# Project exclude paths
-/gradle/
-/src/
+
+### MacOS ###
+.DS_Store
+
+### Project specific ###
+local.properties
+.env
+.env.*
+!.env.example

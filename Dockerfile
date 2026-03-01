@@ -7,7 +7,7 @@ COPY --chown=gradle:gradle src ./src
 RUN ./gradlew buildFatJar --no-daemon
 
 
-FROM openjdk:21-slim
+FROM eclipse-temurin:21-jre-alpine
 EXPOSE 8080
 COPY --from=build /home/gradle/src/build/libs/*-all.jar /app/ktor-render-template.jar
 ENTRYPOINT ["java","-jar","/app/ktor-render-template.jar"]
