@@ -1,7 +1,11 @@
 FROM gradle:8.5-jdk21 AS build
-COPY --chown=gradle:gradle . /home/gradle/src
 WORKDIR /home/gradle/src
+COPY --chown=gradle:gradle build.gradle.kts settings.gradle.kts gradlew gradlew.bat gradle.properties ./
+COPY --chown=gradle:gradle gradle ./gradle
+RUN ./gradlew dependencies --no-daemon
+COPY --chown=gradle:gradle src ./src
 RUN ./gradlew buildFatJar --no-daemon
+
 
 FROM openjdk:21-slim
 EXPOSE 8080
